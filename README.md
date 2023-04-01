@@ -48,7 +48,7 @@ Para executar a aplicação consumidora: Notification
 ```
 ## Documentação da API
 
-#### Retorna um item
+#### Retorna uma ordem
 
 ```http
   GET /v1/orders/${id}
@@ -58,6 +58,7 @@ Para executar a aplicação consumidora: Notification
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `Long` | **Obrigatório**. O ID da ordem buscada. |
 
+#### Edita uma ordem
 
 ```http
   PUT /v1/orders/${id}
@@ -77,11 +78,11 @@ Para executar a aplicação consumidora: Notification
 | :---------- | :--------- | :---------------------------------- |
 | `value` | `BigDecimal` | Valor da ordem. |
 
-#### Edita uma ordem
 
 
 
-## O RabbitMQ está disponível na porta 15672 e pode ser acessado utilizando as credencias descritas abaixo
+
+### O RabbitMQ está disponível na porta 15672 e pode ser acessado utilizando as credenciais descritas abaixo
     http://localhost:15672
 
 - User: rabbitmq
