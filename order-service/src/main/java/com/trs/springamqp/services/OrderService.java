@@ -1,6 +1,6 @@
 package com.trs.springamqp.services;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -27,7 +27,7 @@ public class OrderService {
 	private RabbitTemplate rabbitTemplate;
 	
 	@Transactional(readOnly = true)
-	public Collection<Order> list() {
+	public List<Order> list() {
 		return orderRepo.findAll();
 	}
 
@@ -43,7 +43,7 @@ public class OrderService {
 		
 		orderRepo.save(order);
 		
-		OrderCreatedEventDTO event = new OrderCreatedEventDTO(order.getId(), order.getValue(), order.isPaid());
+		OrderCreatedEventDTO event = new OrderCreatedEventDTO(order.getId(), order.getValue(), order.isPaid(), order.getDate().toString());
 		rabbitTemplate.convertAndSend("orders.v1.order-created", "", event);
 		
 		return order;
@@ -54,7 +54,7 @@ public class OrderService {
 		var order = modelMapper.map(orderDTO, Order.class);
 		orderRepo.save(order);
 
-		OrderCreatedEventDTO event = new OrderCreatedEventDTO(order.getId(), order.getValue(), order.isPaid());
+		OrderCreatedEventDTO event = new OrderCreatedEventDTO(order.getId(), order.getValue(), order.isPaid(), order.getDate().toString());
 		rabbitTemplate.convertAndSend("orders.v1.order-created", "", event);
 
 		return modelMapper.map(order, Order.class);

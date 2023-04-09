@@ -7,7 +7,7 @@ import com.trs.springamqp.dtos.OrderDTO;
 import com.trs.springamqp.models.Order;
 import com.trs.springamqp.services.OrderService;
 
-import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/orders")
@@ -22,7 +22,7 @@ public class OrderController {
 	}
 
 	@GetMapping
-	public Collection<Order> list() {
+	public List<Order> list() {
 		return service.list();
 	}
 

@@ -1,4 +1,4 @@
-package com.trs.springamqp.configs;
+package com.trs.springamqp.rabbitmq;
 
 
 import org.springframework.amqp.core.FanoutExchange;

@@ -1,4 +1,4 @@
-package com.trs.springamqp;
+package com.trs.springamqp.rabbitmq;
 
 
 import org.springframework.amqp.core.Binding;

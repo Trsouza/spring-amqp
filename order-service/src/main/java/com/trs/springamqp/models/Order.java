@@ -3,6 +3,7 @@ package com.trs.springamqp.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_order")
@@ -12,6 +13,7 @@ public class Order {
 	private Long id;
 	private BigDecimal value;
 	private Boolean paid = Boolean.FALSE;
+	private LocalDateTime date = LocalDateTime.now();
 
 	public Long getId() {
 		return id;
@@ -37,6 +39,14 @@ public class Order {
 		this.paid = paid;
 	}
 
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+	
 	public void markAsPaid() {
 		this.paid = true;
 	}

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class OrderCreatedEventDTO {
     private Long id;
-    private BigDecimal value = BigDecimal.ZERO;
+    private BigDecimal value;
     private Boolean paid;
 
     public OrderCreatedEventDTO() {
